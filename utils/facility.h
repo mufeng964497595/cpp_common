@@ -13,11 +13,10 @@
 
 #include <string>
 
-namespace hwf {
 namespace utils {
     std::string GetLocalIp();   // 获取本机IP
     uint64_t GetTimeStampMs();  // 获取毫秒级时间戳
+    void Trim(std::string*);    // 去除字符串首尾的空白字符
 };  // end namespace utils
-};  // end namespace hwf
 
 #endif  // end #ifndef __CPP_COMMON_UTILS_FACILITY_HPP__

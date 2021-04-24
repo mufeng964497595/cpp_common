@@ -5,6 +5,7 @@
  * -----
  * Copyright (c) 2021 Inc.
  */
+#include "cpp_common/utils/facility.h"
 
 #include <arpa/inet.h>
 #include <net/if.h>
@@ -15,10 +16,8 @@
 #include <chrono>   // NOLINT
 #include <string>
 
-#include "facility.hpp"
-
 // 获取当前机器IP
-std::string hwf::utils::GetLocalIp() {
+std::string utils::GetLocalIp() {
     if (socket(AF_INET, SOCK_DGRAM, 0) < 0) {
         return "";
     }
@@ -53,8 +52,17 @@ std::string hwf::utils::GetLocalIp() {
 }
 
 // 获取当前毫秒级时间戳
-uint64_t hwf::utils::GetTimeStampMs() {
+uint64_t utils::GetTimeStampMs() {
     uint64_t timestamp_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
             std::chrono::system_clock::now().time_since_epoch()).count();
     return timestamp_ms;
+}
+
+// 去除字符串首尾的空白字符
+void Trim(std::string* str) {
+    if (str) {
+        static const char blank[] = "\f\v\r\t\n";
+        str->erase(0, str.find_first_not_of(blank));
+        str->erase(str.find_last_not_of(blank) + 1);
+    }
 }

@@ -9,18 +9,20 @@
 #include <iostream>
 #include <memory>
 
-#include "cpp_common/uniq_id/snow_flake.hpp"
+#include "cpp_common/uniq_id/snow_flake.h"
+
+using cpp_common::CSnowFlake;
 
 int main(int argc, char* argv[]) {
-    hwf::CSnowFlake& snow_flake = hwf::CSnowFlake::GetInstance();
-    hwf::CSnowFlake& snow_flake2 = hwf::CSnowFlake::GetInstance();
+    CSnowFlake& snow_flake = CSnowFlake::GetInstance();
+    CSnowFlake& snow_flake2 = CSnowFlake::GetInstance();
     if (!snow_flake.IsInitSucc()) {
         std::cout << "snow_flake init fail, exit\n";
         return -1;
     }
     uint64_t uniq_id(0);
     int ret = snow_flake.GetUniqId(uniq_id);
-    if (hwf::CSnowFlake::OK != ret) {
+    if (CSnowFlake::OK != ret) {
         std::cout << "snow_flake GetUniqId fail, ret: " << ret << "\n";
         return -1;
     }

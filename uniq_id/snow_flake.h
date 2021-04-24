@@ -14,7 +14,7 @@
 #include <memory>
 #include <mutex>    // NOLINT
 
-namespace hwf {
+namespace cpp_common {
 /*
     雪花算法id 64位二进制格式：
     位数：|   63  |   62 ~ 22   |    21 ~ 12   | 11 ~ 0 |
@@ -73,6 +73,6 @@ class CSnowFlake {
     static std::unique_ptr<CSnowFlake> instance_;  // 单例
     std::mutex mutex_;
 };  // end class CSnowFlake
-};  // end namespace hwf
+};  // end namespace cpp_common
 
 #endif  // end #ifndef CPP_COMMON_UNIQ_ID_SNOW_FLAKE_HPP
