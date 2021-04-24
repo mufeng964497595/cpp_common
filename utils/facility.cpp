@@ -59,10 +59,10 @@ uint64_t utils::GetTimeStampMs() {
 }
 
 // 去除字符串首尾的空白字符
-void Trim(std::string* str) {
+void utils::Trim(std::string* str) {
     if (str) {
         static const char blank[] = "\f\v\r\t\n";
-        str->erase(0, str.find_first_not_of(blank));
-        str->erase(str.find_last_not_of(blank) + 1);
+        str->erase(0, str->find_first_not_of(blank));
+        str->erase(str->find_last_not_of(blank) + 1);
     }
 }
